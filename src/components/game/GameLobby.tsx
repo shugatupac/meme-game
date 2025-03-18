@@ -40,10 +40,10 @@ const GameLobby: React.FC<GameLobbyProps> = ({
       id: "3",
       name: "Player 3",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=player3",
-      isReady: false,
+      isReady: true,
     },
   ],
-  isLeader = false,
+  isLeader = true,
   onStartGame = () => console.log("Start game"),
   onLeaveGame = () => console.log("Leave game"),
 }) => {
@@ -185,9 +185,19 @@ const GameLobby: React.FC<GameLobbyProps> = ({
                 : "Start Game"}
             </Button>
           ) : (
-            <div className="flex items-center gap-2 text-lg">
-              <Clock size={20} className="text-amber-300" />
-              <span>Waiting for leader to start the game...</span>
+            <div className="flex flex-col gap-3 items-center">
+              <div className="flex items-center gap-2 text-lg">
+                <Clock size={20} className="text-amber-300" />
+                <span>Waiting for leader to start the game...</span>
+              </div>
+              <Button
+                onClick={onStartGame}
+                className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center justify-center gap-2"
+                size="lg"
+              >
+                <Play size={20} />
+                Request Start Game
+              </Button>
             </div>
           )}
           <Button
